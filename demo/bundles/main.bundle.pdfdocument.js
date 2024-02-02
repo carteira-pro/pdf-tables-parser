@@ -25,8 +25,8 @@ class PdfDocument {
         this.numPages = 0;
         this.pages = [];
     }
-    async load(source) {
-        let pdfdriver = await p(pdflib.getDocument(source).promise);
+    async load(params) {
+        let pdfdriver = await p(pdflib.getDocument(params).promise);
         this.numPages = pdfdriver.numPages;
         this.pages = [];
         try {

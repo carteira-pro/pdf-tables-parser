@@ -25737,8 +25737,8 @@ class PdfDocument {
         this.numPages = 0;
         this.pages = [];
     }
-    async load(source) {
-        let pdfdriver = await p(pdflib.getDocument(source).promise);
+    async load(params) {
+        let pdfdriver = await p(pdflib.getDocument(params).promise);
         this.numPages = pdfdriver.numPages;
         this.pages = [];
         try {
@@ -39525,7 +39525,7 @@ angular.module('demoApp', ['ngSanitize'])
             reader.onload = e => {
                 let data = e.target.result;
                 $scope.pdf = new PdfDocument();
-                $scope.pdf.load(data)
+                $scope.pdf.load({data})
                     .then(_ => $scope.$apply(() => {
                         $scope.error = '';
                         $scope.setPage($scope.pdf.pages[0]);

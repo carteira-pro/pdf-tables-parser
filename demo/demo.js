@@ -13,7 +13,7 @@ angular.module('demoApp', ['ngSanitize'])
             reader.onload = e => {
                 let data = e.target.result;
                 $scope.pdf = new PdfDocument();
-                $scope.pdf.load(data)
+                $scope.pdf.load({data})
                     .then(_ => $scope.$apply(() => {
                         $scope.error = '';
                         $scope.setPage($scope.pdf.pages[0]);

@@ -1,3 +1,4 @@
+// @format: off
 import { PDFDocumentProxy, PDFPageProxy, TextContent, TextContentItem } from 'pdfjs-dist';
 import { PdfTable } from './PdfTable';
 import { Options, PdfPage } from './types';
@@ -34,8 +35,8 @@ export class PdfDocument {
         this.pages = [];
     }
 
-    async load(source: string | Buffer): Promise<void> {
-        let pdfdriver = await p(pdflib.getDocument(source).promise) as PDFDocumentProxy;
+    async load(params: {url?: string | URL, data: ArrayBuffer | Array<number> | string, password?:string}): Promise<void> {
+        let pdfdriver = await p(pdflib.getDocument(params).promise) as PDFDocumentProxy;
         this.numPages = pdfdriver.numPages;
         this.pages = [];
         try {
